@@ -142,7 +142,7 @@ don't give explanation'''
                 selected_answer = query_gpt(selected_system_prompt,selected_user_prompt)
                 output[j]=selected_answer
 
-        print(output)
+        #print(output)
     return output
 
 
