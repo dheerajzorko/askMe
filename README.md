@@ -3,9 +3,12 @@
 
 ## Overview
 
-This Python program leverages the OpenAI GPT-3.5 model to assist in searching for specific sections within a PDF document based on user-provided questions. 
-It extracts text from specified pages of the PDF, combines it with the questions, and queries GPT-3.5 to determine which section of the document might 
-contain the answers to the questions.
+This Python program leverages the OpenAI GPT-3.5turbo-0125 model to answer questions using the input PDF file.
+
+It extracts context pages from the PDF file and determines the sections which might contain the answers for the questions.
+For questions with relevant sections in context page found, the program ask the questions to GPT-3.5-turbo-0125 model with selected pages as user context.
+
+For questions without relevant sections, the program scans the whole pdf until the quesions are answered. In case of no answers found, the program responds with "Data Not Available"
 
 ## Features
 
@@ -16,6 +19,8 @@ contain the answers to the questions.
 ## Dependencies
 
 - Python 3.x
+- `traceback`
+- `gc`
 - `sys`
 - `json`
 - `fitz` (PyMuPDF)
@@ -26,8 +31,7 @@ contain the answers to the questions.
 1. Install Python 3.x on your system if not already installed.
 2. Install dependencies using pip:
 
-
-pip install PyMuPDF openai
+i.e., pip3 install openai
 
 3. Obtain OpenAI API key and set it up as per OpenAI's instructions.
 
@@ -35,18 +39,19 @@ pip install PyMuPDF openai
 
 Run the program from the command line using the following syntax:
 
-
 python3 program.py <pdf_file> <questions_json>
 
-
-
-- `<pdf_file>`: Path to the PDF document.
-- `<questions_json>`: Path to a JSON file containing user-provided questions.
+- `<pdf_file>`: PDF document.
+- `<questions_json>`: JSON file containing user-provided questions.
 
 Example usage:
 
-python3 askMe.py document.pdf questions.json
+python3 questions.py document.pdf questions.json
 
+remember to set openaikey before running the program
+
+i.e.,
+export OPENAI_API_KEY="<REPLACE_WITH_YOUR_OBTAINED_KEY>"
 
 ## How it Works
 
