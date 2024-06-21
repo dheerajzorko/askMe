@@ -5,6 +5,12 @@
 
 This Python program leverages the OpenAI GPT-3.5turbo-0125 model to answer questions using the input PDF file.
 
+### new
+the program created vectors for each page, checks distance from wrt vectors created by questions and picks the one with shortest distance. 
+the shortest distance vector is considered the one with most relevant information wrt to the questions.
+
+
+### old
 It extracts context pages from the PDF file and determines the sections which might contain the answers for the questions.
 For questions with relevant sections in context page found, the program ask the questions to GPT-3.5-turbo-0125 model with selected pages as user context.
 
